@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>버튼 예제</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+            background-color: #f0f0f0; /* 페이지 배경색 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 전체 화면 높이 */
+        }
+
+        .container {
+            display: flex; /* 버튼을 수평으로 배치 */
+            gap: 15px; /* 버튼 사이에 15픽셀 간격 추가 */
+            padding: 20px; /* 컨테이너 내부 여백 */
+            background-color: #fff; /* 컨테이너 배경색 */
+            border-radius: 8px; /* 컨테이너 모서리 둥글기 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        }
+
+        /* 버튼 스타일 */
+        button {
+            padding: 12px 25px; /* 버튼의 내부 여백 */
+            font-size: 16px; /* 버튼 텍스트 크기 */
+            border: none;
+            border-radius: 5px; /* 버튼 모서리 둥글기 */
+            background-color: #007BFF; /* 버튼 배경색 */
+            color: white; /* 버튼 텍스트 색상 */
+            cursor: pointer; /* 마우스 포인터 */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* 배경색과 변형 애니메이션 */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* 버튼 호버 시 배경색 변경 */
+            transform: translateY(-2px); /* 버튼 호버 시 약간 상승 효과 */
+        }
+
+        button:active {
+            transform: translateY(1px); /* 버튼 클릭 시 약간 하강 효과 */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="/question/form" method="get">
+        <button type="submit">질문하기</button>
+    </form>
+    <form action="/question/list" method="get">
+        <button type="submit">답변 작성하기</button>
+    </form>
+    <form action="/question/all" method="get">
+        <button type="submit">전체 확인하기</button>
+    </form>
+</div>
+</body>
+</html>

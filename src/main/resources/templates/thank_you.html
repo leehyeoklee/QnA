@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 폰트 설정 */
+            background-color: #f4f4f4; /* 배경색 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 전체 화면 높이 */
+        }
+
+        h1 {
+            color: #333; /* 제목 색상 */
+            margin-bottom: 20px; /* 제목 아래 여백 */
+        }
+
+        .container {
+            text-align: center; /* 중앙 정렬 */
+            background-color: #fff; /* 컨테이너 배경색 */
+            padding: 20px; /* 내부 여백 */
+            border-radius: 8px; /* 둥근 모서리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        }
+
+        button {
+            padding: 10px 20px; /* 버튼의 내부 여백 */
+            font-size: 16px; /* 버튼 텍스트 크기 */
+            color: #fff; /* 텍스트 색상 */
+            background-color: #007bff; /* 버튼 배경색 */
+            border: none;
+            border-radius: 5px; /* 버튼 모서리 둥글기 */
+            cursor: pointer; /* 마우스 포인터 */
+            transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* 버튼 호버 시 배경색 변경 */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Thank You!</h1>
+    <form action="/" method="get">
+        <button type="submit">메인화면으로</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

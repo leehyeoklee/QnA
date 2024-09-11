@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>질문 목록</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .question-content, .answer-content {
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .navigation-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>질문 목록</h1>
+    <div class="question-content" id="questionContent"></div>
+    <div class="answer-content" id="answerContent"></div>
+    <div class="navigation-buttons">
+        <button onclick="prevQuestion()">이전</button>
+        <button onclick="nextQuestion()">다음</button>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /* Thymeleaf에서 questions 데이터를 JSON 형식으로 전달 */
+    const questions = /*[[${questions}]]*/ [];
+
+    /* answer가 null이 아닌 질문만 필터링 */
+    const filteredQuestions = questions.filter(q => q.answer !== null);
+
+    let currentIndex = 0;
+
+    function displayQuestion(index) {
+        if (index >= 0 && index < filteredQuestions.length) {
+            document.getElementById('questionContent').innerText = filteredQuestions[index].content;
+            document.getElementById('answerContent').innerText = filteredQuestions[index].answer;
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            displayQuestion(currentIndex);
+        }
+    }
+
+    function nextQuestion() {
+        if (currentIndex < filteredQuestions.length - 1) {
+            currentIndex++;
+            displayQuestion(currentIndex);
+        }
+    }
+
+    // 초기 질문 표시
+    if (filteredQuestions.length > 0) {
+        displayQuestion(currentIndex);
+    } else {
+        document.getElementById('questionContent').innerText = "표시할 질문이 없습니다.";
+        document.getElementById('answerContent').innerText = "";
+    }
+</script>
+</body>
+</html>
